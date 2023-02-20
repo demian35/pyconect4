@@ -9,7 +9,20 @@ def creaTablero(N,M):
         t.append(fila)
     return t
 
+##funcion que nos permitira imprimir el tablero 
+def imprimeTablero(tablero):
+     for i in range(len(tablero)):
+        for j in range(len(tablero[i])):
+            print(tablero[i][j], end=" ")
+        print()
+     print()
+     for i in range(len(tablero[0])):
+         print(i,end="")
+     print()
+       
+
+
 if __name__=="__main__":
     tablero=creaTablero(6,7)
-    print(tablero)
+    imprimeTablero(tablero)
 
