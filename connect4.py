@@ -18,7 +18,7 @@ def imprimeTablero(tablero):
      print()
      ##para cada elemento del tablero imprime todos desde el indice 0
      for i in range(len(tablero[0])):
-         print(i,end="")
+         print(i,end=" ") #contamos las columnas para imprimir los indices y asi poder efectuar las jugadas
      print()
        
 
