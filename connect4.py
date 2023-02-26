@@ -20,7 +20,23 @@ def imprimeTablero(tablero):
      for i in range(len(tablero[0])):
          print(i,end=" ") #contamos las columnas para imprimir los indices y asi poder efectuar las jugadas
      print()
-       
+
+##funcion que detecta un empate
+def empate(tablero):
+    for i in range(len(tablero[0])):
+        if(tablero[0][i]==0):##si todos los elementos de una fila son 0 entonces se sigue el juego
+            return False
+        else:
+            return True ##caso contrario se declara partida emptada
+
+def verificaFila(tablero,i,j):#funcion para verificar fila recibimos el tablero y los indices
+    return tablero[i][j]==tablero[i][+1]==tablero[i][j+2]==tablero[i][j+3]!=0
+
+def verificaCol(tablero,i,j):#funcion para verificar columna recibimos el tablero y los indices
+    return tablero[i][j]==tablero[i+1][j]==tablero[i+2][j]==tablero[i+3][j]!=0   
+
+
+
 def main():
     N=6
     M=7
@@ -33,6 +49,10 @@ def main():
             if(tablero[N-1-j][i]==0):
                 tablero[N-1-j][i]=turno
                 break
+
+        if(empate(tablero)):
+            break
+
         print("es turno de " + turno)
         if(turno== "A"):##cambio de turno
             turno= "R"##piezas rojas
