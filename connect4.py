@@ -21,9 +21,28 @@ def imprimeTablero(tablero):
          print(i,end=" ") #contamos las columnas para imprimir los indices y asi poder efectuar las jugadas
      print()
        
+def main():
+    N=6
+    M=7
+    tablero=creaTablero(N,M)
+    turno="A" ##inicializamos con las piezas amarillas
+    while(True):##con cada tirada impiriremos el tablero
+        imprimeTablero(tablero) 
+        i=int(input("Tire "))##entrada del jugador 
+        for j in range(len(tablero)):
+            if(tablero[N-1-j][i]==0):
+                tablero[N-1-j][i]=turno
+                break
+        print("es turno de " + turno)
+        if(turno== "A"):##cambio de turno
+            turno= "R"##piezas rojas
+            print("es turno de " + turno)
+        else:
+            turno="A"
+            
+
 
 
 if __name__=="__main__":
-    tablero=creaTablero(6,7)
-    imprimeTablero(tablero)
+    main()
 
