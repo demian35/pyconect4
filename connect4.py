@@ -30,11 +30,19 @@ def empate(tablero):
             return True ##caso contrario se declara partida emptada
 
 def verificaFila(tablero,i,j):#funcion para verificar fila recibimos el tablero y los indices
-    return tablero[i][j]==tablero[i][+1]==tablero[i][j+2]==tablero[i][j+3]!=0
+    return tablero[i][j]==tablero[i][j+1]==tablero[i][j+2]==tablero[i][j+3]!=0
 
 def verificaCol(tablero,i,j):#funcion para verificar columna recibimos el tablero y los indices
     return tablero[i][j]==tablero[i+1][j]==tablero[i+2][j]==tablero[i+3][j]!=0   
 
+def declaraGanador(tablero,N,M):
+    for i in range(N):
+        for j in range(M):
+            if(j+3 <M and verificaFila(tablero,i,j)):
+                return True
+            if(i+3 <N and verificaCol(tablero,i,j)):
+                return True
+    return False
 
 
 def main():
@@ -49,6 +57,10 @@ def main():
             if(tablero[N-1-j][i]==0):
                 tablero[N-1-j][i]=turno
                 break
+
+        if(declaraGanador(tablero,N,M)):
+            print(turno + " es el ganador felicidades ")
+            break
 
         if(empate(tablero)):
             break
